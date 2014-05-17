@@ -63,7 +63,7 @@ module RailsERD
       alias_method :inheritance?, :specialization?
 
       def <=>(other) # @private :nodoc:
-         if (!generalized.nil?)
+         if (!generalized.nil? && !other.generalized.nil?)
           (generalized.name <=> other.generalized.name).nonzero? or (specialized.name <=> other.specialized.name)
          else
           0
