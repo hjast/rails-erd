@@ -69,6 +69,7 @@ module RailsERD
               s = (specialized.name <=> other.specialized.name)
             else
               s = 0
+            end
             g or s
          else
           0
