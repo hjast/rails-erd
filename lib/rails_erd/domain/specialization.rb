@@ -64,7 +64,12 @@ module RailsERD
 
       def <=>(other) # @private :nodoc:
          if (!generalized.nil? && !other.generalized.nil?)
-          (generalized.name <=> other.generalized.name).nonzero? or (specialized.name <=> other.specialized.name)
+          g = (generalized.name <=> other.generalized.name).nonzero? 
+            if(!g && !specialized.nil? && !other.specialized.nil?)
+              s = (specialized.name <=> other.specialized.name)
+            else
+              s = 0
+            g or s
          else
           0
         end
